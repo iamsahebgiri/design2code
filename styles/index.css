@@ -1,15 +1,32 @@
+@import 'fonts';
+@import 'anim';
+
 @tailwind base;
 
-/* Write your own custom base styles here */
+:root {
+  /* Dark Mode Colors */
+  --bg: #1a202c;
+  --fg: #fafbfc;
+}
+
+.light {
+  --bg: #fafbfc;
+  --fg: #1a202c;
+}
+
+.main-container {
+  background-color: var(--bg);
+}
+
+.heading {
+  color: var(--fg);
+}
 
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
 
 /* Write your own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-}
 
 /* Start purging... */
 @tailwind utilities;
