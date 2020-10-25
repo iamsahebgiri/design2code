@@ -1,26 +1,10 @@
 @import 'fonts';
+@import 'darkmode';
 @import 'anim';
 
 @tailwind base;
 
-:root {
-  /* Dark Mode Colors */
-  --bg: #1a202c;
-  --fg: #fafbfc;
-}
-
-.light {
-  --bg: #fafbfc;
-  --fg: #1a202c;
-}
-
-.main-container {
-  background-color: var(--bg);
-}
-
-.heading {
-  color: var(--fg);
-}
+@import 'progressive-img';
 
 /* Start purging... */
 @tailwind components;

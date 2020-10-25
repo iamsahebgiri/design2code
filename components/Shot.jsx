@@ -1,40 +1,55 @@
-import React, { useState } from 'react';
-
-const Loader = () => (
-  <div className='loader'>
-    <svg
-      version='1.1'
-      id='loader-1'
-      x='0px'
-      y='0px'
-      width='40px'
-      height='40px'
-      viewBox='0 0 50 50'
-      style={{ enableBackground: 'new 0 0 50 50' }}
-    >
-      <path
-        fill='#000'
-        d='M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z'
-      >
-        <animateTransform
-          attributeType='xml'
-          attributeName='transform'
-          type='rotate'
-          from='0 25 25'
-          to='360 25 25'
-          dur='0.6s'
-          repeatCount='indefinite'
-        />
-      </path>
-    </svg>
-  </div>
-);
+import clsx from 'clsx';
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 
 export default function Shot({ shot }) {
-  const { link_to_ref, title } = shot;
+  const { link_to_img, title, developer, id } = shot;
+  const orginal_img = link_to_img.split('?')[0];
+
+  const [isSmallImgLoaded, setIsSmallImgLoaded] = useState(false);
+  const [isLargeImgLoaded, setIsLargeImgLoaded] = useState(false);
+
+  useEffect(() => {
+    // small image
+    const img = new Image();
+    img.src = `${orginal_img}?compress=1&resize=12x9`;
+    img.onload = () => {
+      setIsSmallImgLoaded(true);
+    };
+
+    // large image
+    const img_large = new Image();
+    img_large.src = `${orginal_img}?compress=1&resize=800x600`;
+    img_large.onload = () => {
+      setIsLargeImgLoaded(true);
+    };
+  }, []);
+
   return (
-    <div className='rounded bg-gray-200'>
-      <img src={link_to_ref} alt={title} className='rounded' />
+    <div>
+      <Link href={`/explore/${id}`}>
+        <a>
+          <div
+            className='placeholder rounded bg-gray-200 relative bg-cover bg-no-repeat overflow-hidden'
+            data-large={`${orginal_img}?compress=1&resize=1200x900`}
+          >
+            <img
+              src={`${orginal_img}?compress=1&resize=12x9`}
+              alt={title}
+              className={clsx('img-small', isSmallImgLoaded && 'loaded')}
+            />
+            <img
+              src={`${orginal_img}?compress=1&resize=800x600`}
+              alt={title}
+              className={clsx(isLargeImgLoaded && 'loaded')}
+            />
+            <div className='intrinsic-placeholder' />
+          </div>
+        </a>
+      </Link>
+      <div className='flex items-center justify-between'>
+        <p className='heading py-2 font-semibold text-sm'>{developer}</p>
+      </div>
     </div>
   );
 }
