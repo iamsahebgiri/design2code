@@ -39,7 +39,7 @@ const Code = ({ code, language }) => {
 };
 
 const ExplorePage = (props) => {
-  const { developer, designer, title, code } = props;
+  const { developer, designer, title, code, link_to_img } = props;
   const [activeTab, setActiveTab] = useState('HTML');
   const tabs = ['HTML', 'CSS', 'JAVASCRIPT', 'OUTPUT'];
   const allCode = code.split('__escape__');
@@ -55,7 +55,7 @@ const ExplorePage = (props) => {
     setActiveTab(e.target.textContent);
   };
   return (
-    <div className='main-container'>
+    <div className='main-container min-h-screen'>
       <Header />
       <div className='container mx-auto px-4 pb-8'>
         <div className='shot-details-container flex flex-col md:items-center md:flex-row justify-between'>
@@ -75,9 +75,20 @@ const ExplorePage = (props) => {
             </div>
           </div>
           <div>
-            <button className='rounded-md mt-8 w-full px-4 md:mt-0 focus:outline-none md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-primary-1 hover:bg-primary-2 md:text-lg xl:text-base text-white font-semibold leading-tight shadow-md;'>
-              {activeTab === 'OUTPUT' ? 'View design' : `Copy ${activeTab}`}
-            </button>
+            {activeTab === 'OUTPUT' ? (
+              <a
+                className='block text-center rounded-md mt-8 w-full px-4 md:mt-0 focus:outline-none md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-primary-1 hover:bg-primary-2 md:text-lg xl:text-base text-white font-semibold leading-tight shadow'
+                href={link_to_img}
+                rel='noopener noreferrer nofollow'
+                target='_blank'
+              >
+                View design
+              </a>
+            ) : (
+              <button className='rounded-md mt-8 w-full px-4 md:mt-0 focus:outline-none md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-primary-1 hover:bg-primary-2 md:text-lg xl:text-base text-white font-semibold leading-tight shadow'>
+                {`Copy ${activeTab}`}
+              </button>
+            )}
           </div>
         </div>
         <div className='tabs-container mt-6 '>
@@ -98,7 +109,7 @@ const ExplorePage = (props) => {
           ''
         )}
         {activeTab === 'OUTPUT' ? (
-          <div className='border border-gray-400 rounded mt-2'>
+          <div className='border output-container rounded mt-2 h-screen'>
             <iframe
               srcDoc={srcDoc}
               title='output'
@@ -106,6 +117,7 @@ const ExplorePage = (props) => {
               frameBorder='0'
               width='100%'
               height='100%'
+              className='rounded'
             />
           </div>
         ) : (

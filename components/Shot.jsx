@@ -41,7 +41,7 @@ export default function Shot({ shot }) {
             <img
               src={`${orginal_img}?compress=1&resize=800x600`}
               alt={title}
-              className={clsx(isLargeImgLoaded && 'loaded')}
+              className={clsx('img-large', isLargeImgLoaded && 'loaded')}
             />
             <div className='intrinsic-placeholder' />
           </div>

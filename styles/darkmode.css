@@ -5,6 +5,7 @@
   --svg-color: #a0aec0;
   --subtle-text: #a0aec0;
   --code-bg: #2d3748;
+  --output-border: #4a5568;
 }
 
 .light {
@@ -13,10 +14,15 @@
   --svg-color: #a0aec0;
   --subtle-text: #a0aec0;
   --code-bg: #1a202c;
+  --output-border: #a0aec0;
 }
 
 .main-container {
   background-color: var(--bg);
+}
+
+.output-container {
+  border-color: var(--output-border);
 }
 
 .subtle-text {
