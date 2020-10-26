@@ -1,6 +1,7 @@
 @import 'fonts';
 @import 'darkmode';
 @import 'anim';
+@import 'prismjs';
 
 @tailwind base;
 

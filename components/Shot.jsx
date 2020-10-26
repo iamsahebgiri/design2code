@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 export default function Shot({ shot }) {
-  const { link_to_img, title, developer, id } = shot;
+  const { link_to_img, title, developer, slug } = shot;
   const orginal_img = link_to_img.split('?')[0];
 
   const [isSmallImgLoaded, setIsSmallImgLoaded] = useState(false);
@@ -27,7 +27,7 @@ export default function Shot({ shot }) {
 
   return (
     <div>
-      <Link href={`/explore/${id}`}>
+      <Link href={`/explore/${slug}`}>
         <a>
           <div
             className='placeholder rounded bg-gray-200 relative bg-cover bg-no-repeat overflow-hidden'

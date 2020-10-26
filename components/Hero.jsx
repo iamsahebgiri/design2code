@@ -19,7 +19,7 @@ export default function Hero() {
       <div className='flex mt-10 justify-center'>
         <Link href='/explore'>
           <a className='rounded-md px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-primary-1 hover:bg-primary-2 md:text-lg xl:text-base text-white font-semibold leading-tight shadow-md'>
-            Check Favourites
+            My Favourites
           </a>
         </Link>
         <a

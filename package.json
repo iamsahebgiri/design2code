@@ -8,10 +8,13 @@
   },
   "dependencies": {
     "clsx": "^1.1.1",
+    "gray-matter": "^4.0.2",
+    "marked": "^1.2.2",
     "next": "latest",
+    "prism-react-renderer": "^1.1.1",
+    "prismjs": "^1.22.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-monaco-editor": "^0.40.0",
     "swr": "^0.3.6"
   },
   "devDependencies": {
